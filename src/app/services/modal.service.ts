@@ -20,12 +20,16 @@ export class ModalService {
     });
   }
 
+  public unregister(id: string) {
+    this.modals = this.modals.filter(modal => modal.id !== id);
+  }
+
   public isModalVisible = (id: string): boolean => {
-    return Boolean(this.modals.find(elem => elem.id === id)?.visible);
+    return Boolean(this.modals.find(modal => modal.id === id)?.visible);
   };
 
   public toggleModal = (id: string): void => {
-    const modal = this.modals.find(elem => elem.id === id);
+    const modal = this.modals.find(modal => modal.id === id);
 
     if (modal) modal.visible = !modal.visible;
   };
